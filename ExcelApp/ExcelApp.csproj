@@ -35,6 +35,11 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Crypto, Version=1.8.5.0, Culture=neutral, PublicKeyToken=0e99375e54769942" />
     <Reference Include="Google.Protobuf, Version=3.11.4.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604" />
@@ -105,6 +110,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Excel.cs" />
+    <Compile Include="IVirtualDesktopManager.cs" />
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +130,7 @@
     <Compile Include="Video.Designer.cs">
       <DependentUpon>Video.cs</DependentUpon>
     </Compile>
+    <Compile Include="VirtualDesktop.cs" />
     <Compile Include="WindowsInt.cs" />
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
@@ -140,6 +147,7 @@
     <EmbeddedResource Include="Video.resx">
       <DependentUpon>Video.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.manifest" />
     <None Include="inventoryDataSet.xsc">
       <DependentUpon>inventoryDataSet.xsd</DependentUpon>
     </None>

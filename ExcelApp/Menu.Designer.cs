@@ -51,6 +51,7 @@ namespace ExcelApp
             this.pantallaExcelDataGridView = new System.Windows.Forms.DataGridView();
             this.tableAdapterManager1 = new ExcelApp.inventoryDataSetTableAdapters.TableAdapterManager();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -114,7 +115,7 @@ namespace ExcelApp
             this.pantallaExcelBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.pantallaExcelBindingNavigator.Name = "pantallaExcelBindingNavigator";
             this.pantallaExcelBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.pantallaExcelBindingNavigator.Size = new System.Drawing.Size(1135, 25);
+            this.pantallaExcelBindingNavigator.Size = new System.Drawing.Size(484, 25);
             this.pantallaExcelBindingNavigator.TabIndex = 0;
             this.pantallaExcelBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -170,7 +171,6 @@ namespace ExcelApp
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Position";
             this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -230,7 +230,7 @@ namespace ExcelApp
             this.dataGridViewTextBoxColumn9,
             this.Abrir});
             this.pantallaExcelDataGridView.DataSource = this.pantallaExcelBindingSource;
-            this.pantallaExcelDataGridView.Location = new System.Drawing.Point(78, 98);
+            this.pantallaExcelDataGridView.Location = new System.Drawing.Point(36, 64);
             this.pantallaExcelDataGridView.Name = "pantallaExcelDataGridView";
             this.pantallaExcelDataGridView.RowHeadersVisible = false;
             this.pantallaExcelDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -247,13 +247,22 @@ namespace ExcelApp
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(354, 399);
+            this.button1.Location = new System.Drawing.Point(313, 335);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
+            this.button1.Text = "Abrir";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(450, 335);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Cerrar";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -328,16 +337,22 @@ namespace ExcelApp
             // 
             this.Abrir.HeaderText = "Abrir";
             this.Abrir.Name = "Abrir";
+            this.Abrir.Text = "Abrir";
             // 
             // Menu
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1135, 491);
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
+            this.ClientSize = new System.Drawing.Size(484, 461);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pantallaExcelDataGridView);
             this.Controls.Add(this.pantallaExcelBindingNavigator);
             this.Name = "Menu";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.inventoryDataSet)).EndInit();
@@ -383,6 +398,7 @@ namespace ExcelApp
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewButtonColumn Abrir;
+        private System.Windows.Forms.Button button2;
     }
 }
 

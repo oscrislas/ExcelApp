@@ -17,6 +17,7 @@ namespace ExcelApp
         {
             InitializeComponent();
             addFrame(new Menu());
+     
         }
 
         private void addFrame(Form ventana)

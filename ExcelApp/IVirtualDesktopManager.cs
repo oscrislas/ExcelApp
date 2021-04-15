@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ExcelApp
 {
@@ -74,11 +75,18 @@ namespace ExcelApp
 
         public void MoveWindowToDesktop(IntPtr TopLevelWindow, Guid CurrentDesktop)
         {
-            int hr;
-            if ((hr = manager.MoveWindowToDesktop(TopLevelWindow, CurrentDesktop)) != 0)
+            try
             {
-                Marshal.ThrowExceptionForHR(hr);
+                int hr;
+                if ((hr = manager.MoveWindowToDesktop(TopLevelWindow, CurrentDesktop)) != 0)
+                {
+                    Marshal.ThrowExceptionForHR(hr);
+                }
+            }catch(Exception err)
+            {
+                MessageBox.Show(err.ToString());
             }
+
         }
     }
 }
