@@ -21,6 +21,7 @@ namespace ExcelApp
             InitializeComponent();
             menuconf = new Menu();
             addFrame(menuconf);
+           // this.Size = new System.Drawing.Size(3990, 2200);
             marco.Region = System.Drawing.Region.FromHrgn(c.CreateRoundRectRgn(0, 0, marco.Width, marco.Height, 30, 30));
         }
 
@@ -76,40 +77,34 @@ namespace ExcelApp
         }
 
 
-        private void axWindowsMediaPlayer1_KeyDownEvent_1(object sender, AxWMPLib._WMPOCXEvents_KeyDownEvent e)
+        private async void axWindowsMediaPlayer1_KeyDownEvent_1(object sender, AxWMPLib._WMPOCXEvents_KeyDownEvent e)
         {
             if (e.nKeyCode == 's' || e.nKeyCode == 'S')
             {
-                if (marco.Visible)
+                if (this.marco.Visible)
                 {
-                    axWindowsMediaPlayer1.Visible = false;
+                    this.marco.Visible = false;
 
                 }
                 else
                 {
-                    axWindowsMediaPlayer1.Visible = true;
+                    this.marco.Visible = true;
 
                 }
 
             }
             if (e.nKeyCode == 'c' || e.nKeyCode == 'C')
             {
-                //   clase.CierraExel();
+                menuconf.cerrarExcel();
             }
             if (e.nKeyCode == 'a' || e.nKeyCode == 'A')
             {
-                // this.abreexel();
+                menuconf.AbrirExcel();
             }
             if (e.nKeyCode == 'r' || e.nKeyCode == 'R')
             {
-                /*
-                if (Cargando == false)
-                {
-                    Cargando = true;
-                    clase.CierraExel();
-                    this.abreexel();
-                }
-                */
+                menuconf.cerrarExcel();
+                menuconf.AbrirExcel();
 
             }
             if (e.nKeyCode == 'p' || e.nKeyCode == 'P')
@@ -132,6 +127,30 @@ namespace ExcelApp
                 this.ClientSize = new System.Drawing.Size(ancho, largo);
 
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            playlist();
+        }
+
+        private void axWindowsMediaPlayer1_KeyPressEvent(object sender, AxWMPLib._WMPOCXEvents_KeyPressEvent e)
+        {
+            if (e.nKeyAscii == (short)62)
+            {
+                axWindowsMediaPlayer1.Ctlcontrols.next();
+
+            }
+            if (e.nKeyAscii == (short)60)
+            {
+                axWindowsMediaPlayer1.Ctlcontrols.previous();
+
+            }
+        }
+
+        private void Video_SizeChanged(object sender, EventArgs e)
+        {
+            axWindowsMediaPlayer1.Size = this.Size;
         }
     }
 }

@@ -40,18 +40,6 @@ namespace ExcelApp
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.pantallaExcelBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.pantallaExcelDataGridView = new System.Windows.Forms.DataGridView();
-            this.tableAdapterManager1 = new ExcelApp.inventoryDataSetTableAdapters.TableAdapterManager();
-            this.button1 = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.button3 = new System.Windows.Forms.Button();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.seleccion = new System.Windows.Forms.Button();
-            this.dir = new System.Windows.Forms.TextBox();
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,21 +48,30 @@ namespace ExcelApp
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.pantallasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.Abrir = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.pantallasBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.studentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tableAdapterManager1 = new ExcelApp.inventoryDataSetTableAdapters.TableAdapterManager();
+            this.button1 = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button3 = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
+            this.dir = new System.Windows.Forms.TextBox();
+            this.seleccion = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.studentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.inventoryDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pantallaExcelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pantallaExcelBindingNavigator)).BeginInit();
             this.pantallaExcelBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pantallaExcelDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pantallasBindingSource)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pantallasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -106,6 +103,7 @@ namespace ExcelApp
             this.pantallaExcelBindingNavigator.CountItem = null;
             this.pantallaExcelBindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
             this.pantallaExcelBindingNavigator.Dock = System.Windows.Forms.DockStyle.None;
+            this.pantallaExcelBindingNavigator.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.pantallaExcelBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem,
@@ -116,6 +114,7 @@ namespace ExcelApp
             this.pantallaExcelBindingNavigator.MoveNextItem = null;
             this.pantallaExcelBindingNavigator.MovePreviousItem = null;
             this.pantallaExcelBindingNavigator.Name = "pantallaExcelBindingNavigator";
+            this.pantallaExcelBindingNavigator.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.pantallaExcelBindingNavigator.PositionItem = null;
             this.pantallaExcelBindingNavigator.Size = new System.Drawing.Size(112, 25);
             this.pantallaExcelBindingNavigator.TabIndex = 0;
@@ -127,7 +126,7 @@ namespace ExcelApp
             this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
             this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(28, 22);
             this.bindingNavigatorAddNewItem.Text = "Add new";
             // 
             // bindingNavigatorDeleteItem
@@ -136,7 +135,7 @@ namespace ExcelApp
             this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
             this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(28, 22);
             this.bindingNavigatorDeleteItem.Text = "Delete";
             // 
             // pantallaExcelBindingNavigatorSaveItem
@@ -144,7 +143,7 @@ namespace ExcelApp
             this.pantallaExcelBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.pantallaExcelBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("pantallaExcelBindingNavigatorSaveItem.Image")));
             this.pantallaExcelBindingNavigatorSaveItem.Name = "pantallaExcelBindingNavigatorSaveItem";
-            this.pantallaExcelBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
+            this.pantallaExcelBindingNavigatorSaveItem.Size = new System.Drawing.Size(28, 22);
             this.pantallaExcelBindingNavigatorSaveItem.Text = "Save Data";
             this.pantallaExcelBindingNavigatorSaveItem.Click += new System.EventHandler(this.pantallaExcelBindingNavigatorSaveItem_Click);
             // 
@@ -169,14 +168,119 @@ namespace ExcelApp
             this.dataGridViewTextBoxColumn9,
             this.Abrir});
             this.pantallaExcelDataGridView.DataSource = this.pantallaExcelBindingSource;
-            this.pantallaExcelDataGridView.Location = new System.Drawing.Point(0, 0);
+            this.pantallaExcelDataGridView.Location = new System.Drawing.Point(-3, 0);
             this.pantallaExcelDataGridView.Name = "pantallaExcelDataGridView";
             this.pantallaExcelDataGridView.RowHeadersVisible = false;
+            this.pantallaExcelDataGridView.RowHeadersWidth = 62;
             this.pantallaExcelDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.pantallaExcelDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.pantallaExcelDataGridView.Size = new System.Drawing.Size(643, 418);
+            this.pantallaExcelDataGridView.Size = new System.Drawing.Size(718, 418);
             this.pantallaExcelDataGridView.TabIndex = 1;
             this.pantallaExcelDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.pantallaExcelDataGridView_CellContentClick);
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "nombre";
+            this.dataGridViewTextBoxColumn2.HeaderText = "nombre";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "link";
+            this.dataGridViewTextBoxColumn3.HeaderText = "link";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "sheet";
+            this.dataGridViewTextBoxColumn4.HeaderText = "sheet";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "abrir";
+            this.dataGridViewTextBoxColumn5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.dataGridViewTextBoxColumn5.HeaderText = "abrir";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewTextBoxColumn5.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "fullscream";
+            this.dataGridViewTextBoxColumn10.HeaderText = "fullscream";
+            this.dataGridViewTextBoxColumn10.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn10.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewTextBoxColumn10.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "lectura";
+            this.dataGridViewTextBoxColumn6.HeaderText = "lectura";
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewTextBoxColumn6.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "zoom";
+            this.dataGridViewTextBoxColumn7.HeaderText = "zoom";
+            this.dataGridViewTextBoxColumn7.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "pantalla";
+            this.dataGridViewTextBoxColumn8.DataSource = this.pantallasBindingSource;
+            this.dataGridViewTextBoxColumn8.DisplayMember = "Text";
+            this.dataGridViewTextBoxColumn8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.dataGridViewTextBoxColumn8.HeaderText = "pantalla";
+            this.dataGridViewTextBoxColumn8.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn8.ValueMember = "Value";
+            this.dataGridViewTextBoxColumn8.Width = 50;
+            // 
+            // pantallasBindingSource
+            // 
+            this.pantallasBindingSource.DataSource = typeof(ExcelApp.Pantallas);
+            this.pantallasBindingSource.CurrentChanged += new System.EventHandler(this.pantallasBindingSource_CurrentChanged);
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "escritorio";
+            this.dataGridViewTextBoxColumn9.DataSource = this.pantallasBindingSource;
+            this.dataGridViewTextBoxColumn9.DisplayMember = "Text";
+            this.dataGridViewTextBoxColumn9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.dataGridViewTextBoxColumn9.HeaderText = "escritorio";
+            this.dataGridViewTextBoxColumn9.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn9.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewTextBoxColumn9.ValueMember = "Value";
+            this.dataGridViewTextBoxColumn9.Width = 50;
+            // 
+            // Abrir
+            // 
+            this.Abrir.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Abrir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Abrir.HeaderText = "Abrir";
+            this.Abrir.MinimumWidth = 8;
+            this.Abrir.Name = "Abrir";
+            this.Abrir.Text = "O";
+            this.Abrir.UseColumnTextForButtonValue = true;
+            this.Abrir.Width = 50;
             // 
             // tableAdapterManager1
             // 
@@ -204,7 +308,7 @@ namespace ExcelApp
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(651, 520);
+            this.tabControl1.Size = new System.Drawing.Size(719, 520);
             this.tabControl1.TabIndex = 4;
             // 
             // tabPage1
@@ -214,10 +318,10 @@ namespace ExcelApp
             this.tabPage1.Controls.Add(this.pantallaExcelDataGridView);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.pantallaExcelBindingNavigator);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(643, 494);
+            this.tabPage1.Size = new System.Drawing.Size(711, 491);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Excel Conf";
             // 
@@ -237,12 +341,32 @@ namespace ExcelApp
             this.tabPage2.Controls.Add(this.button2);
             this.tabPage2.Controls.Add(this.dir);
             this.tabPage2.Controls.Add(this.seleccion);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(643, 494);
+            this.tabPage2.Size = new System.Drawing.Size(711, 491);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Video Conf";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(249, 264);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Reproducir";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // dir
+            // 
+            this.dir.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::ExcelApp.Properties.Settings.Default, "URL_Video", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.dir.Location = new System.Drawing.Point(116, 93);
+            this.dir.Name = "dir";
+            this.dir.Size = new System.Drawing.Size(357, 23);
+            this.dir.TabIndex = 1;
+            this.dir.Text = global::ExcelApp.Properties.Settings.Default.URL_Video;
+            this.dir.TextChanged += new System.EventHandler(this.dir_TextChanged);
             // 
             // seleccion
             // 
@@ -254,147 +378,15 @@ namespace ExcelApp
             this.seleccion.UseVisualStyleBackColor = true;
             this.seleccion.Click += new System.EventHandler(this.seleccion_Click);
             // 
-            // dir
-            // 
-            this.dir.Location = new System.Drawing.Point(116, 93);
-            this.dir.Name = "dir";
-            this.dir.Size = new System.Drawing.Size(357, 23);
-            this.dir.TabIndex = 1;
-            // 
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(32)))), ((int)(((byte)(96)))));
-            this.tabPage3.Controls.Add(this.label2);
-            this.tabPage3.Controls.Add(this.label1);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(643, 491);
+            this.tabPage3.Size = new System.Drawing.Size(711, 491);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Clock Conf";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(208, 148);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(208, 93);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 17);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "label2";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "nombre";
-            this.dataGridViewTextBoxColumn2.HeaderText = "nombre";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "link";
-            this.dataGridViewTextBoxColumn3.HeaderText = "link";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "sheet";
-            this.dataGridViewTextBoxColumn4.HeaderText = "sheet";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "abrir";
-            this.dataGridViewTextBoxColumn5.HeaderText = "abrir";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataGridViewTextBoxColumn5.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "fullscream";
-            this.dataGridViewTextBoxColumn10.HeaderText = "fullscream";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn10.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataGridViewTextBoxColumn10.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "lectura";
-            this.dataGridViewTextBoxColumn6.HeaderText = "lectura";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataGridViewTextBoxColumn6.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "zoom";
-            this.dataGridViewTextBoxColumn7.HeaderText = "zoom";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "pantalla";
-            this.dataGridViewTextBoxColumn8.DataSource = this.pantallasBindingSource;
-            this.dataGridViewTextBoxColumn8.DisplayMember = "Text";
-            this.dataGridViewTextBoxColumn8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.dataGridViewTextBoxColumn8.HeaderText = "pantalla";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn8.ValueMember = "Value";
-            this.dataGridViewTextBoxColumn8.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "escritorio";
-            this.dataGridViewTextBoxColumn9.DataSource = this.pantallasBindingSource;
-            this.dataGridViewTextBoxColumn9.DisplayMember = "Text";
-            this.dataGridViewTextBoxColumn9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.dataGridViewTextBoxColumn9.HeaderText = "escritorio";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn9.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataGridViewTextBoxColumn9.ValueMember = "Value";
-            this.dataGridViewTextBoxColumn9.Width = 50;
-            // 
-            // Abrir
-            // 
-            this.Abrir.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Abrir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Abrir.HeaderText = "Abrir";
-            this.Abrir.Name = "Abrir";
-            this.Abrir.Text = "O";
-            this.Abrir.UseColumnTextForButtonValue = true;
-            this.Abrir.Width = 30;
-            // 
-            // pantallasBindingSource
-            // 
-            this.pantallasBindingSource.DataSource = typeof(ExcelApp.Pantallas);
-            this.pantallasBindingSource.CurrentChanged += new System.EventHandler(this.pantallasBindingSource_CurrentChanged);
-            // 
-            // studentBindingSource
-            // 
-            this.studentBindingSource.DataSource = typeof(ExcelApp.Student);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(249, 264);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Reproducir";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // Menu
             // 
@@ -402,7 +394,7 @@ namespace ExcelApp
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
-            this.ClientSize = new System.Drawing.Size(650, 519);
+            this.ClientSize = new System.Drawing.Size(720, 519);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.HelpButton = true;
@@ -417,13 +409,11 @@ namespace ExcelApp
             this.pantallaExcelBindingNavigator.ResumeLayout(false);
             this.pantallaExcelBindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pantallaExcelDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pantallasBindingSource)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pantallasBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -452,8 +442,7 @@ namespace ExcelApp
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
@@ -464,7 +453,6 @@ namespace ExcelApp
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewButtonColumn Abrir;
-        private System.Windows.Forms.Button button2;
     }
 }
 

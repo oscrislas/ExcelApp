@@ -33,5 +33,17 @@ namespace ExcelApp.Properties {
                 return ((string)(this["inventoryConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string URL_Video {
+            get {
+                return ((string)(this["URL_Video"]));
+            }
+            set {
+                this["URL_Video"] = value;
+            }
+        }
     }
 }

@@ -10,5 +10,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">server=108.175.5.116;user id=oliver;password=Cristina6192380953;persistsecurityinfo=True;database=inventory;allowuservariables=True</Value>
     </Setting>
+    <Setting Name="URL_Video" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

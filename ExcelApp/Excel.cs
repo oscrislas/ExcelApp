@@ -1,4 +1,4 @@
-﻿using Excel = Microsoft.Office.Interop.Excel;
+﻿using Microsoft.Office.Interop.Excel;
 using System.Runtime.InteropServices;
 using System;
 using System.Windows.Forms;
@@ -7,6 +7,7 @@ using WindowsDesktop;
 using VirtualDesktop;
 using ExcelApp;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace ExcelApp
 {
@@ -28,6 +29,7 @@ namespace ExcelApp
         private bool fullscrem = false;
         private IntPtr handle;
         private int escritorio = 0;
+        private List <string> sheets;
 
         public Excel(string link,string sheet, bool abrir, bool fullsrem, bool modo ,int zoom,int pantall,int esctritorio)
         {
@@ -42,10 +44,16 @@ namespace ExcelApp
  
         }
 
-        public Excel(string link, string sheet)
+        public void setNewData(string link, string sheet, bool abrir, bool fullsrem, bool modo, int zoom, int pantall, int esctritorio)
         {
             this.link = link;
             this.sheet = sheet;
+            this.zoom = zoom;
+            this.pantalla = pantall;
+            this.modo = modo;
+            this.abrir = abrir;
+            this.fullscrem = fullsrem;
+            this.escritorio = esctritorio;
         }
         public void AbreConHilos()
         {
@@ -61,8 +69,25 @@ namespace ExcelApp
 
                 
         }
+
+        public void GetName()
+        {
+            sheets = new List<string>();
+            Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel.Workbook excelWorkbook = excelApp.Workbooks.Open(this.link);
+            Microsoft.Office.Interop.Excel.Sheets excelSheets = excelWorkbook.Worksheets;
+            this.nombre=excelWorkbook.Name;
+            foreach(Microsoft.Office.Interop.Excel.Worksheet sheet in excelWorkbook.Worksheets)
+            {
+                sheets.Add(sheet.Name);
+            }
+            
+            excelWorkbook.Close();
+
+        }
         public void AbreExel()
         {
+            GetName();
             if (this.abrir)
             {
                 Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();

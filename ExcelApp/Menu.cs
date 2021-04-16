@@ -17,19 +17,18 @@ namespace ExcelApp
         List<Excel> lista = new List<Excel>();
         public Menu()
         {
-                   InitializeComponent();
-            List<string> lista = new List< string > ();
+            InitializeComponent();
+            List<string> lista = new List<string>();
             lista.Insert(0, "1");
             lista.Insert(1, "2");
             lista.Insert(2, "3");
             lista.Insert(3, "4");
-        
+
             pantallasBindingSource.Add(new Pantallas() { Value = 0, Text = "1" });
             pantallasBindingSource.Add(new Pantallas() { Value = 1, Text = "2" });
             pantallasBindingSource.Add(new Pantallas() { Value = 2, Text = "3" });
             pantallasBindingSource.Add(new Pantallas() { Value = 3, Text = "4" });
-           // pantallasBindingSource.Add(new Pantallas() { Value = 4, Text = "Bill" });
-            //dataGridViewTextBoxColumn8.DataSource = pantallasBindingSource;
+
         }
 
         private void pantallaExcelBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -50,22 +49,29 @@ namespace ExcelApp
             {
                 MessageBox.Show(err.ToString());
             }
-            finally{
+            finally
+            {
                 excelInit();
             }
             // TODO: This line of code loads data into the 'inventoryDataSet.pantallaExcel' table. You can move, or remove it, as needed.
-           
+
 
         }
 
-        private  async void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
+            AbrirExcel();
+        }
+
+        public void AbrirExcel()
+        {
+            ActualizaExcelListTodo();
             foreach (Excel excel in lista)
             {
                 excel.AbreConHilos();
             }
 
-            revisa();
+           // revisa();
 
         }
 
@@ -82,10 +88,10 @@ namespace ExcelApp
                 int.TryParse(this.pantallaExcelDataGridView.Rows[i].Cells[4].Value.ToString(), out modo);
                 int.TryParse(this.pantallaExcelDataGridView.Rows[i].Cells[5].Value.ToString(), out fullscrem);
 
-                    lista.Add(new Excel(this.pantallaExcelDataGridView.Rows[i].Cells[1].Value.ToString(), this.pantallaExcelDataGridView.Rows[i].Cells[2].Value.ToString(),
-                    abrir == 1, modo == 1, fullscrem == 1,
-                    (int)this.pantallaExcelDataGridView.Rows[i].Cells[6].Value, (int)this.pantallaExcelDataGridView.Rows[i].Cells[7].Value, (int)this.pantallaExcelDataGridView.Rows[i].Cells[8].Value));
-                
+                lista.Add(new Excel(this.pantallaExcelDataGridView.Rows[i].Cells[1].Value.ToString(), this.pantallaExcelDataGridView.Rows[i].Cells[2].Value.ToString(),
+                abrir == 1, modo == 1, fullscrem == 1,
+                (int)this.pantallaExcelDataGridView.Rows[i].Cells[6].Value, (int)this.pantallaExcelDataGridView.Rows[i].Cells[7].Value, (int)this.pantallaExcelDataGridView.Rows[i].Cells[8].Value));
+
 
 
                 //        
@@ -93,14 +99,49 @@ namespace ExcelApp
             }
         }
 
+        private void ActualizaExcelList()
+        {
+            int i = 0;
+            i = pantallaExcelDataGridView.CurrentRow.Index;
+            int abrir = 0;
+            int modo = 0;
+            int fullscrem = 0;
+            int.TryParse(this.pantallaExcelDataGridView.Rows[i].Cells[3].Value.ToString(), out abrir);
+            int.TryParse(this.pantallaExcelDataGridView.Rows[i].Cells[4].Value.ToString(), out modo);
+            int.TryParse(this.pantallaExcelDataGridView.Rows[i].Cells[5].Value.ToString(), out fullscrem);
+            this.lista[i].setNewData(this.pantallaExcelDataGridView.Rows[i].Cells[1].Value.ToString(), this.pantallaExcelDataGridView.Rows[i].Cells[2].Value.ToString(),
+                abrir == 1, modo == 1, fullscrem == 1,
+                (int)this.pantallaExcelDataGridView.Rows[i].Cells[6].Value, (int)this.pantallaExcelDataGridView.Rows[i].Cells[7].Value, (int)this.pantallaExcelDataGridView.Rows[i].Cells[8].Value);
+
+        }
+
+        private void ActualizaExcelListTodo()
+        {
+            for (int i = 0; i < this.pantallaExcelDataGridView.Rows.Count; i++)
+            {
+
+                int abrir = 0;
+                int modo = 0;
+                int fullscrem = 0;
+                int.TryParse(this.pantallaExcelDataGridView.Rows[i].Cells[3].Value.ToString(), out abrir);
+                int.TryParse(this.pantallaExcelDataGridView.Rows[i].Cells[4].Value.ToString(), out modo);
+                int.TryParse(this.pantallaExcelDataGridView.Rows[i].Cells[5].Value.ToString(), out fullscrem);
+
+                this.lista[i].setNewData(this.pantallaExcelDataGridView.Rows[i].Cells[1].Value.ToString(), this.pantallaExcelDataGridView.Rows[i].Cells[2].Value.ToString(),
+                    abrir == 1, modo == 1, fullscrem == 1,
+                    (int)this.pantallaExcelDataGridView.Rows[i].Cells[6].Value, (int)this.pantallaExcelDataGridView.Rows[i].Cells[7].Value, (int)this.pantallaExcelDataGridView.Rows[i].Cells[8].Value);  
+
+            }
+        }
+
         private void revisa()
         {
-            for(int i =0; i < lista.Count; i++)
+            for (int i = 0; i < lista.Count; i++)
             {
                 while (lista[i].TypingThread.IsAlive) ;
                 lista[i].mueve();
             }
-            
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -113,11 +154,12 @@ namespace ExcelApp
             var senderGrid = (DataGridView)sender;
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
+                this.ActualizaExcelList();
                 lista[pantallaExcelDataGridView.CurrentRow.Index].AbreExel();
 
             }
 
-            
+
         }
 
         private void pantallasBindingSource_CurrentChanged(object sender, EventArgs e)
@@ -130,6 +172,7 @@ namespace ExcelApp
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 dir.Text = folderBrowserDialog1.SelectedPath;
+                Properties.Settings.Default.Save();
             }
         }
 
@@ -138,6 +181,32 @@ namespace ExcelApp
             return dir.Text;
         }
 
+        private void dir_TextChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Save();
+        }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public void cerrarExcel()
+        {
+            Excel.CierraExel();
+        }
+
+        public int countDataGridViewOpen()
+        {
+            int res = 0;
+            for(int i=0;i< this.pantallaExcelDataGridView.Rows.Count; i++)
+            {
+                if (this.pantallaExcelDataGridView.Rows[i].Cells[3].Value.Equals(1))
+                {
+                    res++;
+                }
+            }
+            return res;
+        }
     }
 }
