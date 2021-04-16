@@ -8,7 +8,7 @@ using VirtualDesktop;
 using ExcelApp;
 using System.Threading.Tasks;
 
-namespace WindowsFormsApp1
+namespace ExcelApp
 {
 
 
@@ -135,7 +135,7 @@ namespace WindowsFormsApp1
             VirtualDesktop.Desktop.FromIndex(this.escritorio).MoveWindow(this.handle);
         }
 
-        public void CierraExel()
+        public static void CierraExel()
         {
             System.Diagnostics.Process[] process = System.Diagnostics.Process.GetProcessesByName("Excel");
             foreach (System.Diagnostics.Process p in process)

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApp1;
+
 
 namespace ExcelApp
 {
@@ -18,7 +18,18 @@ namespace ExcelApp
         public Menu()
         {
                    InitializeComponent();
-            
+            List<string> lista = new List< string > ();
+            lista.Insert(0, "1");
+            lista.Insert(1, "2");
+            lista.Insert(2, "3");
+            lista.Insert(3, "4");
+        
+            pantallasBindingSource.Add(new Pantallas() { Value = 0, Text = "1" });
+            pantallasBindingSource.Add(new Pantallas() { Value = 1, Text = "2" });
+            pantallasBindingSource.Add(new Pantallas() { Value = 2, Text = "3" });
+            pantallasBindingSource.Add(new Pantallas() { Value = 3, Text = "4" });
+           // pantallasBindingSource.Add(new Pantallas() { Value = 4, Text = "Bill" });
+            //dataGridViewTextBoxColumn8.DataSource = pantallasBindingSource;
         }
 
         private void pantallaExcelBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -39,6 +50,9 @@ namespace ExcelApp
             {
                 MessageBox.Show(err.ToString());
             }
+            finally{
+                excelInit();
+            }
             // TODO: This line of code loads data into the 'inventoryDataSet.pantallaExcel' table. You can move, or remove it, as needed.
            
 
@@ -46,25 +60,37 @@ namespace ExcelApp
 
         private  async void button1_Click(object sender, EventArgs e)
         {
-            for(int i =0; i< this.pantallaExcelDataGridView.Rows.Count; i++)
+            foreach (Excel excel in lista)
             {
-                
+                excel.AbreConHilos();
+            }
+
+            revisa();
+
+        }
+
+        private void excelInit()
+        {
+            lista.Clear();
+            for (int i = 0; i < this.pantallaExcelDataGridView.Rows.Count; i++)
+            {
+
                 int abrir = 0;
                 int modo = 0;
                 int fullscrem = 0;
                 int.TryParse(this.pantallaExcelDataGridView.Rows[i].Cells[3].Value.ToString(), out abrir);
                 int.TryParse(this.pantallaExcelDataGridView.Rows[i].Cells[4].Value.ToString(), out modo);
                 int.TryParse(this.pantallaExcelDataGridView.Rows[i].Cells[5].Value.ToString(), out fullscrem);
-                lista.Add(new Excel(this.pantallaExcelDataGridView.Rows[i].Cells[1].Value.ToString(), this.pantallaExcelDataGridView.Rows[i].Cells[2].Value.ToString(),
-                abrir == 1, modo == 1, fullscrem == 1,
-                (int)this.pantallaExcelDataGridView.Rows[i].Cells[6].Value, (int)this.pantallaExcelDataGridView.Rows[i].Cells[7].Value,(int)this.pantallaExcelDataGridView.Rows[i].Cells[8].Value));
 
-                this.lista[i].AbreConHilos();
+                    lista.Add(new Excel(this.pantallaExcelDataGridView.Rows[i].Cells[1].Value.ToString(), this.pantallaExcelDataGridView.Rows[i].Cells[2].Value.ToString(),
+                    abrir == 1, modo == 1, fullscrem == 1,
+                    (int)this.pantallaExcelDataGridView.Rows[i].Cells[6].Value, (int)this.pantallaExcelDataGridView.Rows[i].Cells[7].Value, (int)this.pantallaExcelDataGridView.Rows[i].Cells[8].Value));
+                
+
+
+                //        
 
             }
-
-            revisa();
-
         }
 
         private void revisa()
@@ -75,6 +101,41 @@ namespace ExcelApp
                 lista[i].mueve();
             }
             
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Excel.CierraExel();
+        }
+
+        private void pantallaExcelDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                lista[pantallaExcelDataGridView.CurrentRow.Index].AbreExel();
+
+            }
+
+            
+        }
+
+        private void pantallasBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void seleccion_Click(object sender, EventArgs e)
+        {
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                dir.Text = folderBrowserDialog1.SelectedPath;
+            }
+        }
+
+        public string getDirText()
+        {
+            return dir.Text;
         }
 
 

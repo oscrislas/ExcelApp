@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsDesktop.Interop;
 
-namespace WindowsFormsApp1
+namespace ExcelApp
 {
-    class WindowsInt: IVirtualDesktopManager
+    class WindowsInt
     {
         public const int SWP_NOACTIVATE = 0x0010;
         public const int SWP_NOZORDER = 0x4;
@@ -63,20 +63,24 @@ namespace WindowsFormsApp1
             SetWindowPos(MainWindowHandle, new IntPtr(0), 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_FRAMECHANGED);
         }
 
-        public bool IsWindowOnCurrentVirtualDesktop(IntPtr topLevelWindow)
-        {
-            throw new NotImplementedException();
-        }
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        public extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        public extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
 
-        public Guid GetWindowDesktopId(IntPtr topLevelWindow)
-        {
-            throw new NotImplementedException();
-        }
 
-        public void MoveWindowToDesktop(IntPtr topLevelWindow, ref Guid desktopId)
-        {
-            throw new NotImplementedException();
-        }
+        public static extern IntPtr CreateRoundRectRgn
+            (
+                int nLeftRect,     // x-coordinate of upper-left corner
+                int nTopRect,      // y-coordinate of upper-left corner
+                int nRightRect,    // x-coordinate of lower-right corner
+                int nBottomRect,   // y-coordinate of lower-right corner
+                int nWidthEllipse, // height of ellipse
+                int nHeightEllipse // width of ellipse
+            );
+
+
     }
 
 
