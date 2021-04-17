@@ -108,8 +108,10 @@ namespace ExcelApp
             }
             if (e.nKeyCode == 'r' || e.nKeyCode == 'R')
             {
-                menuconf.cerrarExcel();
-                menuconf.AbrirExcel();
+                this.marco.Visible = true;
+                addFrame(new CargaPantalla());
+             //   menuconf.cerrarExcel();
+             //   menuconf.AbrirExcel();
 
             }
             if (e.nKeyCode == 'p' || e.nKeyCode == 'P')
