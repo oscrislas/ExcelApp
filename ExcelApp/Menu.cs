@@ -15,19 +15,28 @@ namespace ExcelApp
     public partial class Menu : Form
     {
         List<Excel> lista = new List<Excel>();
+        public float cargaPorcentaje = 0;
         public Menu()
         {
             InitializeComponent();
-            List<string> lista = new List<string>();
-            lista.Insert(0, "1");
-            lista.Insert(1, "2");
-            lista.Insert(2, "3");
-            lista.Insert(3, "4");
 
             pantallasBindingSource.Add(new Pantallas() { Value = 0, Text = "1" });
             pantallasBindingSource.Add(new Pantallas() { Value = 1, Text = "2" });
             pantallasBindingSource.Add(new Pantallas() { Value = 2, Text = "3" });
             pantallasBindingSource.Add(new Pantallas() { Value = 3, Text = "4" });
+
+            try
+            {
+                this.pantallaExcelTableAdapter.Fill(this.inventoryDataSet.pantallaExcel);
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.ToString());
+            }
+            finally
+            {
+                excelInit();
+            }
 
         }
 
@@ -66,12 +75,15 @@ namespace ExcelApp
         public void AbrirExcel()
         {
             ActualizaExcelListTodo();
+            int i = 0;
             foreach (Excel excel in lista)
             {
+                i++;
+                cargaPorcentaje = ((i * 100) / lista.Count);
                 excel.AbreConHilos();
             }
 
-           // revisa();
+            revisa();
 
         }
 
@@ -139,7 +151,7 @@ namespace ExcelApp
             for (int i = 0; i < lista.Count; i++)
             {
                 while (lista[i].TypingThread.IsAlive) ;
-                lista[i].mueve();
+                cargaPorcentaje = ((i * 100) / lista.Count);
             }
 
         }
@@ -207,6 +219,17 @@ namespace ExcelApp
                 }
             }
             return res;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            List<string> lista = Excel.GetName(this.textBox1.Text);
+            foreach(string list in lista)
+            {
+                sheetBindingSource.Add(new Sheet() { Value = "0", Nombre = list });
+            }
+            
+            
         }
     }
 }

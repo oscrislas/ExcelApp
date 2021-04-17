@@ -23,7 +23,7 @@ namespace ExcelApp
         public Relog()
         {
             InitializeComponent();
-            fecha = DateTime.Now.ToShortTimeString();
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -63,6 +63,12 @@ namespace ExcelApp
             }
             minuto++;
             Console.WriteLine(minuto);
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            reloj.Text = DateTime.Now.ToShortTimeString();
+            this.miFecha.Text = DateTime.Now.ToLongDateString();
         }
     }
 }

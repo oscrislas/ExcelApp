@@ -23,6 +23,11 @@ namespace ExcelApp
             addFrame(menuconf);
            // this.Size = new System.Drawing.Size(3990, 2200);
             marco.Region = System.Drawing.Region.FromHrgn(c.CreateRoundRectRgn(0, 0, marco.Width, marco.Height, 30, 30));
+            menu.Region = System.Drawing.Region.FromHrgn(c.CreateRoundRectRgn(0, 0, marco.Width, marco.Height, 30, 30));
+
+            PingApp();
+
+            addFrame(new CargaPantalla());
         }
 
         private void addFrame(Form ventana)
@@ -151,6 +156,40 @@ namespace ExcelApp
         private void Video_SizeChanged(object sender, EventArgs e)
         {
             axWindowsMediaPlayer1.Size = this.Size;
+        }
+
+        private void PingApp()
+        {
+            this.TopMost = true;
+
+            // VirtualDesktop.Desktop.PinApplication(this.Handle);
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+            actualiza();
+
+
+        }
+
+        private void actualiza()
+        {
+            try
+            {
+                if (InvokeRequired)
+                {
+                    this.Invoke(new Action(actualiza));
+                }
+                this.progressBar1.Value += 1;
+
+                Console.WriteLine((int)menuconf.cargaPorcentaje);
+            }
+            catch(Exception err)
+            {
+                MessageBox.Show(err.ToString());
+            }
+
         }
     }
 }

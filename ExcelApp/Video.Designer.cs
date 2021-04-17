@@ -29,13 +29,17 @@ namespace ExcelApp
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Video));
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.marco = new System.Windows.Forms.Panel();
             this.menu = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.pantallaExcelTableAdapter1 = new ExcelApp.inventoryDataSetTableAdapters.pantallaExcelTableAdapter();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
             this.marco.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -44,7 +48,7 @@ namespace ExcelApp
             // axWindowsMediaPlayer1
             // 
             this.axWindowsMediaPlayer1.Enabled = true;
-            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(-12, -21);
+            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(0, 0);
             this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
             this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
             this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(1290, 700);
@@ -61,6 +65,7 @@ namespace ExcelApp
             this.marco.Name = "marco";
             this.marco.Size = new System.Drawing.Size(738, 596);
             this.marco.TabIndex = 1;
+            this.marco.Visible = false;
             this.marco.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menu_MouseDown);
             // 
             // menu
@@ -70,16 +75,6 @@ namespace ExcelApp
             this.menu.Name = "menu";
             this.menu.Size = new System.Drawing.Size(700, 520);
             this.menu.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(622, 544);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Cerrar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel1
             // 
@@ -100,6 +95,33 @@ namespace ExcelApp
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(622, 544);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Cerrar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(275, 0);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(622, 23);
+            this.progressBar1.TabIndex = 2;
+            // 
+            // pantallaExcelTableAdapter1
+            // 
+            this.pantallaExcelTableAdapter1.ClearBeforeFill = true;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Video
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -107,8 +129,10 @@ namespace ExcelApp
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1270, 677);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.marco);
             this.Controls.Add(this.axWindowsMediaPlayer1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Video";
             this.Text = "Video";
             this.SizeChanged += new System.EventHandler(this.Video_SizeChanged);
@@ -127,5 +151,8 @@ namespace ExcelApp
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private inventoryDataSetTableAdapters.pantallaExcelTableAdapter pantallaExcelTableAdapter1;
+        private System.Windows.Forms.Timer timer1;
     }
 }

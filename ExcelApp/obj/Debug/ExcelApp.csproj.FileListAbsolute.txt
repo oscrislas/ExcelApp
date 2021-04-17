@@ -234,3 +234,8 @@ C:\Users\fscadmin\Desktop\ExcelApp\ExcelApp\obj\Debug\ExcelApp.csproj.CoreCompil
 C:\Users\fscadmin\Desktop\ExcelApp\ExcelApp\obj\Debug\ExcelApp.csproj.CopyComplete
 C:\Users\fscadmin\Desktop\ExcelApp\ExcelApp\obj\Debug\ExcelApp.exe
 C:\Users\fscadmin\Desktop\ExcelApp\ExcelApp\obj\Debug\ExcelApp.pdb
+C:\Users\oscri\source\repos\ExcelApp\ExcelApp\obj\Debug\ExcelApp.Relog.resources
+C:\Users\oscri\source\repos\ExcelApp\ExcelApp\bin\Debug\CircularProgressBar.dll
+C:\Users\oscri\source\repos\ExcelApp\ExcelApp\bin\Debug\WinFormAnimation.dll
+C:\Users\oscri\source\repos\ExcelApp\ExcelApp\bin\Debug\CircularProgressBar.xml
+C:\Users\oscri\source\repos\ExcelApp\ExcelApp\obj\Debug\ExcelApp.CargaPantalla.resources

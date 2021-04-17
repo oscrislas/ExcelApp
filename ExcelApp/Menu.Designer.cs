@@ -51,10 +51,14 @@ namespace ExcelApp
             this.pantallasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.Abrir = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.sheetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableAdapterManager1 = new ExcelApp.inventoryDataSetTableAdapters.TableAdapterManager();
             this.button1 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button4 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
@@ -62,17 +66,18 @@ namespace ExcelApp
             this.seleccion = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.studentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pantallaExcelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pantallaExcelBindingNavigator)).BeginInit();
             this.pantallaExcelBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pantallaExcelDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pantallasBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sheetBindingSource)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.studentBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // inventoryDataSet
@@ -174,7 +179,7 @@ namespace ExcelApp
             this.pantallaExcelDataGridView.RowHeadersWidth = 62;
             this.pantallaExcelDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.pantallaExcelDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.pantallaExcelDataGridView.Size = new System.Drawing.Size(718, 418);
+            this.pantallaExcelDataGridView.Size = new System.Drawing.Size(718, 335);
             this.pantallaExcelDataGridView.TabIndex = 1;
             this.pantallaExcelDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.pantallaExcelDataGridView_CellContentClick);
             // 
@@ -199,6 +204,7 @@ namespace ExcelApp
             this.dataGridViewTextBoxColumn4.HeaderText = "sheet";
             this.dataGridViewTextBoxColumn4.MinimumWidth = 8;
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -282,6 +288,10 @@ namespace ExcelApp
             this.Abrir.UseColumnTextForButtonValue = true;
             this.Abrir.Width = 50;
             // 
+            // sheetBindingSource
+            // 
+            this.sheetBindingSource.DataSource = typeof(ExcelApp.Sheet);
+            // 
             // tableAdapterManager1
             // 
             this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
@@ -314,6 +324,11 @@ namespace ExcelApp
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(32)))), ((int)(((byte)(96)))));
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Controls.Add(this.button4);
+            this.tabPage1.Controls.Add(this.comboBox1);
+            this.tabPage1.Controls.Add(this.textBox1);
             this.tabPage1.Controls.Add(this.button3);
             this.tabPage1.Controls.Add(this.pantallaExcelDataGridView);
             this.tabPage1.Controls.Add(this.button1);
@@ -324,6 +339,34 @@ namespace ExcelApp
             this.tabPage1.Size = new System.Drawing.Size(711, 491);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Excel Conf";
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(576, 370);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(139, 23);
+            this.button4.TabIndex = 7;
+            this.button4.Text = "Buscar Sheets";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DataSource = this.sheetBindingSource;
+            this.comboBox1.DisplayMember = "Nombre";
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(372, 370);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(158, 24);
+            this.comboBox1.TabIndex = 6;
+            this.comboBox1.ValueMember = "Value";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(150, 367);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 23);
+            this.textBox1.TabIndex = 5;
             // 
             // button3
             // 
@@ -388,6 +431,24 @@ namespace ExcelApp
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Clock Conf";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(8, 370);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(136, 17);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Nombre del Archivo:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(288, 373);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(56, 17);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Sheets:";
+            // 
             // Menu
             // 
             this.AllowDrop = true;
@@ -410,11 +471,12 @@ namespace ExcelApp
             this.pantallaExcelBindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pantallaExcelDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pantallasBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sheetBindingSource)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.studentBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -436,13 +498,16 @@ namespace ExcelApp
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.BindingSource pantallasBindingSource;
-        private System.Windows.Forms.BindingSource studentBindingSource;
         private System.Windows.Forms.TextBox dir;
         private System.Windows.Forms.Button seleccion;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.BindingSource sheetBindingSource;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
@@ -453,6 +518,8 @@ namespace ExcelApp
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewButtonColumn Abrir;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }
 

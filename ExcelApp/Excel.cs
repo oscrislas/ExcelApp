@@ -13,7 +13,7 @@ namespace ExcelApp
 {
 
 
-    internal class Excel:WindowsInt
+    internal class Excel : WindowsInt
     {
         public Thread TypingThread = null;
         private string nombre = null;
@@ -29,9 +29,9 @@ namespace ExcelApp
         private bool fullscrem = false;
         private IntPtr handle;
         private int escritorio = 0;
-        private List <string> sheets;
+        private List<string> sheets;
 
-        public Excel(string link,string sheet, bool abrir, bool fullsrem, bool modo ,int zoom,int pantall,int esctritorio)
+        public Excel(string link, string sheet, bool abrir, bool fullsrem, bool modo, int zoom, int pantall, int esctritorio)
         {
             this.link = link;
             this.sheet = sheet;
@@ -41,7 +41,7 @@ namespace ExcelApp
             this.abrir = abrir;
             this.fullscrem = fullsrem;
             this.escritorio = esctritorio;
- 
+
         }
 
         public void setNewData(string link, string sheet, bool abrir, bool fullsrem, bool modo, int zoom, int pantall, int esctritorio)
@@ -60,34 +60,36 @@ namespace ExcelApp
             this.TypingThread = new Thread(delegate () {
 
                 AbreExel();
-                
+
 
                 // Change the status of the buttons inside the TypingThread
                 // This won't throw an exception anymore !
             });
-            this.TypingThread.Start();         
+            this.TypingThread.Start();
 
-                
+
         }
 
-        public void GetName()
+        public static List<string> GetName(string link)
         {
+            List<string> sheets;
             sheets = new List<string>();
             Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();
-            Microsoft.Office.Interop.Excel.Workbook excelWorkbook = excelApp.Workbooks.Open(this.link);
+            Microsoft.Office.Interop.Excel.Workbook excelWorkbook = excelApp.Workbooks.Open(link);
             Microsoft.Office.Interop.Excel.Sheets excelSheets = excelWorkbook.Worksheets;
-            this.nombre=excelWorkbook.Name;
+         //   this.nombre=excelWorkbook.Name;
             foreach(Microsoft.Office.Interop.Excel.Worksheet sheet in excelWorkbook.Worksheets)
             {
                 sheets.Add(sheet.Name);
             }
             
             excelWorkbook.Close();
+            return sheets;
 
         }
         public void AbreExel()
         {
-            GetName();
+            
             if (this.abrir)
             {
                 Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();
@@ -144,9 +146,13 @@ namespace ExcelApp
 
         public void MueveVentana()
         {
-            MakeExternalWindowBorderless(this.handle);
-            SetWindowPos(this.handle, -2, Screen.AllScreens[this.pantalla].WorkingArea.X, Screen.AllScreens[this.pantalla].WorkingArea.Y + this.AjusteY, Screen.AllScreens[this.pantalla].WorkingArea.Width, Screen.AllScreens[this.pantalla].WorkingArea.Height, SWP_SHOWWINDOW);
-            mueve();
+            if (this.abrir ==true)
+            {
+                MakeExternalWindowBorderless(this.handle);
+                SetWindowPos(this.handle, -2, Screen.AllScreens[this.pantalla].WorkingArea.X, Screen.AllScreens[this.pantalla].WorkingArea.Y + this.AjusteY, Screen.AllScreens[this.pantalla].WorkingArea.Width, Screen.AllScreens[this.pantalla].WorkingArea.Height, SWP_SHOWWINDOW);
+                mueve();
+            }
+
         }
 
         public void MuestraExcel()
