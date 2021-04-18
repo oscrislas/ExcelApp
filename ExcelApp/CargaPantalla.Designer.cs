@@ -39,16 +39,16 @@ namespace ExcelApp
             this.circularProgressBar1.BackColor = System.Drawing.Color.Transparent;
             this.circularProgressBar1.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Bold);
             this.circularProgressBar1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.circularProgressBar1.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.circularProgressBar1.InnerColor = System.Drawing.Color.Black;
             this.circularProgressBar1.InnerMargin = 2;
             this.circularProgressBar1.InnerWidth = -1;
-            this.circularProgressBar1.Location = new System.Drawing.Point(156, 41);
+            this.circularProgressBar1.Location = new System.Drawing.Point(410, 239);
             this.circularProgressBar1.MarqueeAnimationSpeed = 2000;
             this.circularProgressBar1.Name = "circularProgressBar1";
             this.circularProgressBar1.OuterColor = System.Drawing.Color.Gray;
             this.circularProgressBar1.OuterMargin = -25;
             this.circularProgressBar1.OuterWidth = 26;
-            this.circularProgressBar1.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.circularProgressBar1.ProgressColor = System.Drawing.Color.WhiteSmoke;
             this.circularProgressBar1.ProgressWidth = 25;
             this.circularProgressBar1.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
             this.circularProgressBar1.Size = new System.Drawing.Size(320, 320);
@@ -69,11 +69,21 @@ namespace ExcelApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(653, 450);
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
+            this.BackColor = System.Drawing.Color.Black;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.ClientSize = new System.Drawing.Size(1386, 788);
+            this.ControlBox = false;
             this.Controls.Add(this.circularProgressBar1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.HelpButton = true;
             this.Name = "CargaPantalla";
+            this.Opacity = 0.8D;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CargaPantalla";
+            this.TopMost = true;
+            this.TransparencyKey = System.Drawing.Color.Transparent;
             this.ResumeLayout(false);
 
         }

@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,35 +17,55 @@ namespace ExcelApp
     {
         List<Excel> lista = new List<Excel>();
         public float cargaPorcentaje = 0;
+        
         public Menu()
         {
             InitializeComponent();
-
+            
             pantallasBindingSource.Add(new Pantallas() { Value = 0, Text = "1" });
             pantallasBindingSource.Add(new Pantallas() { Value = 1, Text = "2" });
             pantallasBindingSource.Add(new Pantallas() { Value = 2, Text = "3" });
             pantallasBindingSource.Add(new Pantallas() { Value = 3, Text = "4" });
+            
+            ActualizaDataGridView();
 
+
+        }
+
+        private void ActualizaDataGridView()
+        {
             try
             {
                 this.pantallaExcelTableAdapter.Fill(this.inventoryDataSet.pantallaExcel);
+                excelInit();
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.ToString());
-            }
-            finally
-            {
-                excelInit();
+                MessageBox.Show(err.Message);
             }
 
         }
 
         private void pantallaExcelBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            this.Validate();
-            this.pantallaExcelBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.inventoryDataSet);
+            try
+            {
+                this.Validate();
+                this.pantallaExcelBindingSource.EndEdit();
+                
+                this.tableAdapterManager.UpdateAll(this.inventoryDataSet);
+                this.pantallaExcelTableAdapter.Fill(this.inventoryDataSet.pantallaExcel);
+                excelInit();
+                MessageBox.Show("Se a guardado los datos");
+
+            }
+            catch(Exception err)
+            {
+                MessageBox.Show("guaradar "+err.Message);
+            }
+
+
+
 
         }
 
@@ -69,7 +90,18 @@ namespace ExcelApp
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            AbrirExcel();
+            try
+            {
+                Thread carga = new Thread(() => new CargaPantalla().ShowDialog());
+                carga.Start();
+                this.cerrarExcel();
+                this.AbrirExcel();
+                carga.Abort();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.ToString());
+            }
         }
 
         public void AbrirExcel()
@@ -84,7 +116,6 @@ namespace ExcelApp
             }
 
             revisa();
-
         }
 
         private void excelInit()
@@ -166,8 +197,21 @@ namespace ExcelApp
             var senderGrid = (DataGridView)sender;
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
+                
                 this.ActualizaExcelList();
-                lista[pantallaExcelDataGridView.CurrentRow.Index].AbreExel();
+                try
+                {
+                    Thread mihilo = new Thread(() => new CargaPantalla().ShowDialog());
+                    mihilo.Start();
+                    lista[pantallaExcelDataGridView.CurrentRow.Index].AbreExel();
+                    mihilo.Abort();
+
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show(err.ToString());
+                }
+                
 
             }
 
@@ -230,6 +274,29 @@ namespace ExcelApp
             }
             
             
+        }
+
+        private void ActulizaExceles()
+        {
+            lista[10].GuardaExcel();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ActulizaExceles();
+        }
+
+        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+        {
+            int i = 0;
+            i = pantallaExcelDataGridView.Rows.Count-1;
+
+            this.pantallaExcelDataGridView.Rows[i].Cells[3].Value = 1;
+            this.pantallaExcelDataGridView.Rows[i].Cells[4].Value = 1;
+            this.pantallaExcelDataGridView.Rows[i].Cells[5].Value = 1;
+            this.pantallaExcelDataGridView.Rows[i].Cells[6].Value = 100;
+            this.pantallaExcelDataGridView.Rows[i].Cells[7].Value = 0;
+            this.pantallaExcelDataGridView.Rows[i].Cells[8].Value = 0;
         }
     }
 }

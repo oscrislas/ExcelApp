@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using c=ExcelApp.WindowsInt;
@@ -15,11 +16,15 @@ namespace ExcelApp
     public partial class Video : Form
     {
         Form formulario = null;
+        Form cargando = null;
         Menu menuconf = null;
+        
+        int progreso = 0;
         public Video()
         {
             InitializeComponent();
             menuconf = new Menu();
+            
             addFrame(menuconf);
            // this.Size = new System.Drawing.Size(3990, 2200);
             marco.Region = System.Drawing.Region.FromHrgn(c.CreateRoundRectRgn(0, 0, marco.Width, marco.Height, 30, 30));
@@ -27,9 +32,7 @@ namespace ExcelApp
 
             PingApp();
 
-            addFrame(new CargaPantalla());
         }
-
         private void addFrame(Form ventana)
         {
             if (formulario != null)
@@ -63,8 +66,6 @@ namespace ExcelApp
         {
             try
             {
-
-
                 foreach (var item in Directory.GetFiles(menuconf.getDirText(), "*.MP4"))
                 {
                     WMPLib.IWMPMedia nueva = axWindowsMediaPlayer1.newMedia(item);
@@ -108,16 +109,26 @@ namespace ExcelApp
             }
             if (e.nKeyCode == 'r' || e.nKeyCode == 'R')
             {
-                this.marco.Visible = true;
-                addFrame(new CargaPantalla());
-             //   menuconf.cerrarExcel();
-             //   menuconf.AbrirExcel();
+                try
+                {
+                    Thread carga = new Thread(() => new CargaPantalla().ShowDialog());
+                    carga.Start();
+                    menuconf.cerrarExcel();
+                    menuconf.AbrirExcel();
+                    carga.Abort();
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show(err.ToString());
+                }
+
+
 
             }
             if (e.nKeyCode == 'p' || e.nKeyCode == 'P')
-            {
+            {              
 
-                playlist();
+                 playlist();
 
             }
             if (e.nKeyCode == 'x' || e.nKeyCode == 'X')
@@ -167,31 +178,5 @@ namespace ExcelApp
             // VirtualDesktop.Desktop.PinApplication(this.Handle);
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-
-            actualiza();
-
-
-        }
-
-        private void actualiza()
-        {
-            try
-            {
-                if (InvokeRequired)
-                {
-                    this.Invoke(new Action(actualiza));
-                }
-                this.progressBar1.Value += 1;
-
-                Console.WriteLine((int)menuconf.cargaPorcentaje);
-            }
-            catch(Exception err)
-            {
-                MessageBox.Show(err.ToString());
-            }
-
-        }
     }
 }

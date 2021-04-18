@@ -56,6 +56,9 @@ namespace ExcelApp
             this.button1 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button5 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -66,8 +69,6 @@ namespace ExcelApp
             this.seleccion = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pantallaExcelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pantallaExcelBindingNavigator)).BeginInit();
@@ -133,6 +134,7 @@ namespace ExcelApp
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(28, 22);
             this.bindingNavigatorAddNewItem.Text = "Add new";
+            this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
             // 
             // bindingNavigatorDeleteItem
             // 
@@ -324,6 +326,7 @@ namespace ExcelApp
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(32)))), ((int)(((byte)(96)))));
+            this.tabPage1.Controls.Add(this.button5);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.button4);
@@ -339,6 +342,34 @@ namespace ExcelApp
             this.tabPage1.Size = new System.Drawing.Size(711, 491);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Excel Conf";
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(309, 423);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(129, 23);
+            this.button5.TabIndex = 10;
+            this.button5.Text = "testAutoUpdate";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(288, 373);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(56, 17);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Sheets:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(8, 370);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(136, 17);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Nombre del Archivo:";
             // 
             // button4
             // 
@@ -431,24 +462,6 @@ namespace ExcelApp
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Clock Conf";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 370);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(136, 17);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Nombre del Archivo:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(288, 373);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 17);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Sheets:";
-            // 
             // Menu
             // 
             this.AllowDrop = true;
@@ -520,6 +533,7 @@ namespace ExcelApp
         private System.Windows.Forms.DataGridViewButtonColumn Abrir;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button5;
     }
 }
 

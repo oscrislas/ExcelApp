@@ -16,5 +16,10 @@ namespace ExcelApp
         {
             InitializeComponent();
         }
+
+        private void cerrar(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

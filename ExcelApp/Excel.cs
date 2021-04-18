@@ -20,16 +20,14 @@ namespace ExcelApp
         private string link = null;
         private string sheet = null;
         private int zoom = 0;
-        private int hand = 0;
-        private int AjusteY = 0;
-        private int AjusteX = 0;
         private int pantalla = 0;
         private bool modo = false;
         private bool abrir = false;
         private bool fullscrem = false;
         private IntPtr handle;
         private int escritorio = 0;
-        private List<string> sheets;
+        private Microsoft.Office.Interop.Excel.Application excelApp;
+        private Microsoft.Office.Interop.Excel.Workbook excelWorkbook;
 
         public Excel(string link, string sheet, bool abrir, bool fullsrem, bool modo, int zoom, int pantall, int esctritorio)
         {
@@ -41,7 +39,6 @@ namespace ExcelApp
             this.abrir = abrir;
             this.fullscrem = fullsrem;
             this.escritorio = esctritorio;
-
         }
 
         public void setNewData(string link, string sheet, bool abrir, bool fullsrem, bool modo, int zoom, int pantall, int esctritorio)
@@ -75,15 +72,25 @@ namespace ExcelApp
             List<string> sheets;
             sheets = new List<string>();
             Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();
-            Microsoft.Office.Interop.Excel.Workbook excelWorkbook = excelApp.Workbooks.Open(link);
-            Microsoft.Office.Interop.Excel.Sheets excelSheets = excelWorkbook.Worksheets;
-         //   this.nombre=excelWorkbook.Name;
-            foreach(Microsoft.Office.Interop.Excel.Worksheet sheet in excelWorkbook.Worksheets)
+            excelApp.Visible = false;
+            try
             {
-                sheets.Add(sheet.Name);
+                Microsoft.Office.Interop.Excel.Workbook excelWorkbook = excelApp.Workbooks.Open(link);
+                Microsoft.Office.Interop.Excel.Sheets excelSheets = excelWorkbook.Worksheets;
+                //   this.nombre=excelWorkbook.Name;
+                foreach (Microsoft.Office.Interop.Excel.Worksheet sheet in excelWorkbook.Worksheets)
+                {
+                    sheets.Add(sheet.Name);
+                }
+
+                excelWorkbook.Close();
             }
-            
-            excelWorkbook.Close();
+            catch(Exception err)
+            {
+                MessageBox.Show("URL invalido Revisar URL"+err.Message);
+            }
+
+
             return sheets;
 
         }
@@ -92,41 +99,41 @@ namespace ExcelApp
             
             if (this.abrir)
             {
-                Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();
+                excelApp = new Microsoft.Office.Interop.Excel.Application();
+                excelWorkbook = excelApp.Workbooks.Open(this.link,
+                            0, this.modo, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "",
+                            true, false, 0, true, false, false);
+
                 // if you want to make excel visible to user, set this property to true, false by default
                 excelApp.DisplayAlerts = false;
                 excelApp.Visible = true;
                 excelApp.DisplayFullScreen = this.fullscrem;
                 excelApp.DisplayScrollBars = false;
+                
 
                 // open an existing workbook
                 try
                 {
-                    Microsoft.Office.Interop.Excel.Workbook excelWorkbook = excelApp.Workbooks.Open(this.link,
-                        0, this.modo, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "",
-                        true, false, 0, true, false, false);
-
-                    excelWorkbook.Activate();
-
+                    this.excelWorkbook.Activate();
+                    
                     // get all sheets in workbook
-                    Microsoft.Office.Interop.Excel.Sheets excelSheets = excelWorkbook.Worksheets;
+                    Microsoft.Office.Interop.Excel.Sheets excelSheets = this.excelWorkbook.Worksheets;
+                    if (this.sheet != "")
+                    {
+                        Microsoft.Office.Interop.Excel.Worksheet excelWorksheet = (Microsoft.Office.Interop.Excel.Worksheet)excelSheets.get_Item(sheet);
+                        Microsoft.Office.Interop.Excel.Range excelCell = (Microsoft.Office.Interop.Excel.Range)excelWorksheet.get_Range("A1", "A1");
+                        excelWorksheet.Activate();
 
-                    Microsoft.Office.Interop.Excel.Worksheet excelWorksheet = (Microsoft.Office.Interop.Excel.Worksheet)excelSheets.get_Item(sheet);
-                    //  Microsoft.Office.Interop.Excel.Worksheet excelWorksheets = (Microsoft.Office.Interop.Excel.Worksheet)excelSheets;
-                    //excelWorksheet.Activate();
-
-                    Microsoft.Office.Interop.Excel.Range excelCell = (Microsoft.Office.Interop.Excel.Range)excelWorksheet.get_Range("A1", "A1");
-
-                    excelWorksheet.Activate();
-
-                    excelCell.Activate();
+                        excelCell.Activate();
+                    }
+                    
                     if (this.zoom != 0)
                     {
                         excelApp.ActiveWindow.Zoom = this.zoom;
                     }
                     this.handle = (IntPtr)excelApp.Hwnd;
 
-                    this.nombre = excelWorkbook.Name;
+                    this.nombre = this.excelWorkbook.Name;
                     excelApp.ActiveWindow.DisplayWorkbookTabs = false;
                     MueveVentana();
                    
@@ -149,7 +156,7 @@ namespace ExcelApp
             if (this.abrir ==true)
             {
                 MakeExternalWindowBorderless(this.handle);
-                SetWindowPos(this.handle, -2, Screen.AllScreens[this.pantalla].WorkingArea.X, Screen.AllScreens[this.pantalla].WorkingArea.Y + this.AjusteY, Screen.AllScreens[this.pantalla].WorkingArea.Width, Screen.AllScreens[this.pantalla].WorkingArea.Height, SWP_SHOWWINDOW);
+                SetWindowPos(this.handle, -2, Screen.AllScreens[this.pantalla].WorkingArea.X, Screen.AllScreens[this.pantalla].WorkingArea.Y , Screen.AllScreens[this.pantalla].WorkingArea.Width, Screen.AllScreens[this.pantalla].WorkingArea.Height, SWP_SHOWWINDOW);
                 mueve();
             }
 
@@ -159,6 +166,11 @@ namespace ExcelApp
         {
             ShowWindow(this.handle, 3);//error line
             SetForegroundWindow(this.handle);
+        }
+
+        public void GuardaExcel()
+        {
+            this.excelWorkbook.Save();
         }
 
         public async void mueve()
