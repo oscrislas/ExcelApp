@@ -205,10 +205,9 @@ namespace ExcelApp
                 this.ActualizaExcelList();
                 try
                 {
-                    Thread mihilo = new Thread(() => new CargaPantalla().ShowDialog());
-                    mihilo.Start();
+                    this.Cursor = Cursors.WaitCursor;
                     lista[pantallaExcelDataGridView.CurrentRow.Index].AbreExel();
-                    mihilo.Abort();
+                    this.Cursor = Cursors.Arrow;
 
                 }
                 catch (Exception err)
@@ -290,6 +289,7 @@ namespace ExcelApp
                 }
                 if (lista[i].Modo == true && lista[i].Abrir == true)
                 {
+                    lista[i].CierraExcel();
                     lista[i].AbreConHilos();
                 }
                 
