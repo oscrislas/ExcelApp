@@ -178,5 +178,9 @@ namespace ExcelApp
             // VirtualDesktop.Desktop.PinApplication(this.Handle);
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.addFrame(new Relog());
+        }
     }
 }

@@ -45,5 +45,17 @@ namespace ExcelApp.Properties {
                 this["URL_Video"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Reloj {
+            get {
+                return ((string)(this["Reloj"]));
+            }
+            set {
+                this["Reloj"] = value;
+            }
+        }
     }
 }

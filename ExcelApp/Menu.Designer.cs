@@ -69,6 +69,7 @@ namespace ExcelApp
             this.seleccion = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pantallaExcelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pantallaExcelBindingNavigator)).BeginInit();
@@ -79,6 +80,7 @@ namespace ExcelApp
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // inventoryDataSet
@@ -455,12 +457,21 @@ namespace ExcelApp
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(32)))), ((int)(((byte)(96)))));
+            this.tabPage3.Controls.Add(this.panel1);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(711, 491);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Clock Conf";
+            // 
+            // panel1
+            // 
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(705, 485);
+            this.panel1.TabIndex = 0;
             // 
             // Menu
             // 
@@ -490,6 +501,7 @@ namespace ExcelApp
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -534,6 +546,7 @@ namespace ExcelApp
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

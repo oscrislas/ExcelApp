@@ -298,5 +298,7 @@ namespace ExcelApp
             this.pantallaExcelDataGridView.Rows[i].Cells[7].Value = 0;
             this.pantallaExcelDataGridView.Rows[i].Cells[8].Value = 0;
         }
+
+        
     }
 }

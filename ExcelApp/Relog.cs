@@ -20,6 +20,7 @@ namespace ExcelApp
         int ano;
         List<string> alarma = new List<string>();
         bool AlarmaActidada;
+        Menu m = new Menu();
         public Relog()
         {
             InitializeComponent();
@@ -40,11 +41,17 @@ namespace ExcelApp
                     this.Invoke(new Action(Reloje));
                 }
                 
-                reloj.Text = fecha;
-                if ((fecha.Equals(reloj.Text) && (AlarmaActidada == false)) || (fecha.Equals("7:00 AM") && (AlarmaActidada == false)) || (fecha.Equals("2:00 PM") && (AlarmaActidada == false)))
+                if ((reloj.Text.Equals("7:00 am") && (AlarmaActidada == false)) || (fecha.Equals("7:00 AM") && (AlarmaActidada == false)) || (fecha.Equals("2:00 PM") && (AlarmaActidada == false)))
                 {
                     minuto = 0;
-
+                  //  m.AbrirExcel();
+                    AlarmaActidada = true;
+                    Console.WriteLine("alarma");
+                }
+                if ((reloj.Text.Equals("2:00 pm") && (AlarmaActidada == false)) || (fecha.Equals("7:00 AM") && (AlarmaActidada == false)) || (fecha.Equals("2:00 PM") && (AlarmaActidada == false)))
+                {
+                    minuto = 0;
+                 //   m.AbrirExcel();
                     AlarmaActidada = true;
                     Console.WriteLine("alarma");
                 }
@@ -69,6 +76,26 @@ namespace ExcelApp
         {
             reloj.Text = DateTime.Now.ToShortTimeString();
             this.miFecha.Text = DateTime.Now.ToLongDateString();
+        }
+
+        private void dataGridView1_EditModeChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Save();
+        }
+
+        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            Properties.Settings.Default.Save();
+        }
+
+        private void dataGridView1_CellErrorTextChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            Properties.Settings.Default.Save();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Save();
         }
     }
 }
