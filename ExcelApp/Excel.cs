@@ -29,14 +29,17 @@ namespace ExcelApp
         private Microsoft.Office.Interop.Excel.Application excelApp;
         private Microsoft.Office.Interop.Excel.Workbook excelWorkbook;
 
+        public bool Modo { get => modo; set => modo = value; }
+        public bool Abrir { get => abrir; set => abrir = value; }
+
         public Excel(string link, string sheet, bool abrir, bool fullsrem, bool modo, int zoom, int pantall, int esctritorio)
         {
             this.link = link;
             this.sheet = sheet;
             this.zoom = zoom;
             this.pantalla = pantall;
-            this.modo = modo;
-            this.abrir = abrir;
+            this.Modo = modo;
+            this.Abrir = abrir;
             this.fullscrem = fullsrem;
             this.escritorio = esctritorio;
         }
@@ -47,8 +50,8 @@ namespace ExcelApp
             this.sheet = sheet;
             this.zoom = zoom;
             this.pantalla = pantall;
-            this.modo = modo;
-            this.abrir = abrir;
+            this.Modo = modo;
+            this.Abrir = abrir;
             this.fullscrem = fullsrem;
             this.escritorio = esctritorio;
         }
@@ -97,11 +100,11 @@ namespace ExcelApp
         public void AbreExel()
         {
             
-            if (this.abrir)
+            if (this.Abrir)
             {
                 excelApp = new Microsoft.Office.Interop.Excel.Application();
                 excelWorkbook = excelApp.Workbooks.Open(this.link,
-                            0, this.modo, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "",
+                            0, this.Modo, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "",
                             true, false, 0, true, false, false);
 
                 // if you want to make excel visible to user, set this property to true, false by default
@@ -153,7 +156,7 @@ namespace ExcelApp
 
         public void MueveVentana()
         {
-            if (this.abrir ==true)
+            if (this.Abrir ==true)
             {
                 MakeExternalWindowBorderless(this.handle);
                 SetWindowPos(this.handle, -2, Screen.AllScreens[this.pantalla].WorkingArea.X, Screen.AllScreens[this.pantalla].WorkingArea.Y , Screen.AllScreens[this.pantalla].WorkingArea.Width, Screen.AllScreens[this.pantalla].WorkingArea.Height, SWP_SHOWWINDOW);
@@ -192,6 +195,11 @@ namespace ExcelApp
                     catch { }
                 }
             }
+        }
+
+        public void CierraExcel()
+        {
+            
         }
     }
 }

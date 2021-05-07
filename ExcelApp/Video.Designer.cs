@@ -34,10 +34,10 @@ namespace ExcelApp
             this.marco = new System.Windows.Forms.Panel();
             this.menu = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.pantallaExcelTableAdapter1 = new ExcelApp.inventoryDataSetTableAdapters.pantallaExcelTableAdapter();
-            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
             this.marco.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -84,6 +84,16 @@ namespace ExcelApp
             this.panel1.Size = new System.Drawing.Size(700, 567);
             this.panel1.TabIndex = 0;
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(443, 544);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 2;
+            this.button3.Text = "Reloj";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(524, 544);
@@ -108,16 +118,6 @@ namespace ExcelApp
             // 
             this.pantallaExcelTableAdapter1.ClearBeforeFill = true;
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(443, 544);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Reloj";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // Video
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -129,6 +129,7 @@ namespace ExcelApp
             this.Controls.Add(this.axWindowsMediaPlayer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Video";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Video";
             this.SizeChanged += new System.EventHandler(this.Video_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();

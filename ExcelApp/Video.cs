@@ -31,6 +31,8 @@ namespace ExcelApp
             menu.Region = System.Drawing.Region.FromHrgn(c.CreateRoundRectRgn(0, 0, marco.Width, marco.Height, 30, 30));
 
             PingApp();
+            this.ClientSize = new Size(3990,2200);
+            playlist();
 
         }
         private void addFrame(Form ventana)
@@ -107,15 +109,33 @@ namespace ExcelApp
             {
                 menuconf.AbrirExcel();
             }
+            if (e.nKeyCode == 'o' || e.nKeyCode == 'O')
+            {
+                try
+                {
+                    this.Cursor = Cursors.WaitCursor;
+                    menuconf.cerrarExcel();
+                    menuconf.AbrirExcel();
+                    this.Cursor = Cursors.Arrow;
+
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show(err.ToString());
+                }
+
+
+
+            }
+
             if (e.nKeyCode == 'r' || e.nKeyCode == 'R')
             {
                 try
                 {
-                    Thread carga = new Thread(() => new CargaPantalla().ShowDialog());
-                    carga.Start();
-                    menuconf.cerrarExcel();
-                    menuconf.AbrirExcel();
-                    carga.Abort();
+                    this.Cursor = Cursors.WaitCursor;
+                    menuconf.ActulizaExceles();
+                    this.Cursor = Cursors.Arrow;
+
                 }
                 catch (Exception err)
                 {

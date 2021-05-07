@@ -26,8 +26,9 @@ namespace ExcelApp
             pantallasBindingSource.Add(new Pantallas() { Value = 1, Text = "2" });
             pantallasBindingSource.Add(new Pantallas() { Value = 2, Text = "3" });
             pantallasBindingSource.Add(new Pantallas() { Value = 3, Text = "4" });
-            
+            DrawCursorsOnForm(this.Cursor);
             ActualizaDataGridView();
+           
 
 
         }
@@ -92,11 +93,14 @@ namespace ExcelApp
         {
             try
             {
-                Thread carga = new Thread(() => new CargaPantalla().ShowDialog());
-                carga.Start();
+                //   Thread carga = new Thread(() => new CargaPantalla().ShowDialog());
+                //   carga.Start();
+                this.Cursor = Cursors.WaitCursor;
+                
                 this.cerrarExcel();
                 this.AbrirExcel();
-                carga.Abort();
+                this.Cursor = Cursors.Arrow;
+            //    carga.Abort();
             }
             catch (Exception err)
             {
@@ -276,9 +280,21 @@ namespace ExcelApp
             
         }
 
-        private void ActulizaExceles()
+        public void ActulizaExceles()
         {
-            lista[10].GuardaExcel();
+            for(int i = 0; i < lista.Count; i++)
+            {
+                if (lista[i].Modo == false&&lista[i].Abrir==true)
+                {
+                    lista[i].GuardaExcel();
+                }
+                if (lista[i].Modo == true && lista[i].Abrir == true)
+                {
+                    lista[i].AbreConHilos();
+                }
+                
+            }
+            
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -299,6 +315,33 @@ namespace ExcelApp
             this.pantallaExcelDataGridView.Rows[i].Cells[8].Value = 0;
         }
 
-        
+        private void DrawCursorsOnForm(Cursor cursor)
+        {
+            // If the form's cursor is not the Hand cursor and the 
+            // Current cursor is the Default, Draw the specified 
+            // cursor on the form in normal size and twice normal size.
+            if (this.Cursor != Cursors.Hand &
+              Cursor.Current == Cursors.Default)
+            {
+                // Draw the cursor stretched.
+                Graphics graphics = this.CreateGraphics();
+                Rectangle rectangle = new Rectangle(
+                  new Point(10, 10), new Size(cursor.Size.Width * 2,
+                  cursor.Size.Height * 2));
+                cursor.DrawStretched(graphics, rectangle);
+
+                // Draw the cursor in normal size.
+                rectangle.Location = new Point(
+                rectangle.Width + rectangle.Location.X,
+                  rectangle.Height + rectangle.Location.Y);
+                rectangle.Size = cursor.Size;
+                cursor.Draw(graphics, rectangle);
+
+                // Dispose of the cursor.
+                cursor.Dispose();
+            }
+        }
+
+
     }
 }
