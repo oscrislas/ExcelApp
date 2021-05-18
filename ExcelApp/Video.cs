@@ -31,8 +31,9 @@ namespace ExcelApp
             menu.Region = System.Drawing.Region.FromHrgn(c.CreateRoundRectRgn(0, 0, marco.Width, marco.Height, 30, 30));
 
             PingApp();
-            this.ClientSize = new Size(3990,2200);
+            //this.ClientSize = new Size(3990,2200);
             playlist();
+            menuconf.cerrarExcel();
 
         }
         private void addFrame(Form ventana)
@@ -123,26 +124,30 @@ namespace ExcelApp
                 {
                     MessageBox.Show(err.ToString());
                 }
-
-
-
             }
 
             if (e.nKeyCode == 'r' || e.nKeyCode == 'R')
             {
+                this.Cursor = Cursors.WaitCursor;
                 try
                 {
-                    this.Cursor = Cursors.WaitCursor;
-                    menuconf.ActulizaExceles();
-                    this.Cursor = Cursors.Arrow;
+                    if (menuconf.estanAbiertos == false)
+                    {
+                        menuconf.AbrirExcel();
+                    }
+                    else
+                    {
+                        this.Cursor = Cursors.WaitCursor;
+                        menuconf.ActulizaExceles();
+                        this.Cursor = Cursors.Arrow;
+                    }
 
                 }
                 catch (Exception err)
                 {
                     MessageBox.Show(err.ToString());
                 }
-
-
+                this.Cursor = Cursors.Arrow;
 
             }
             if (e.nKeyCode == 'p' || e.nKeyCode == 'P')
@@ -159,7 +164,7 @@ namespace ExcelApp
 
             }
             if (e.nKeyCode == 'm' || e.nKeyCode == 'M')
-            {
+            {   
                 int ancho = 3990;
                 int largo = 2200;
                 this.ClientSize = new System.Drawing.Size(ancho, largo);
@@ -201,6 +206,30 @@ namespace ExcelApp
         private void button3_Click(object sender, EventArgs e)
         {
             this.addFrame(new Relog());
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+            try
+            {
+                if (this.menuconf.Lista.Count > 0)
+                {
+                   
+                    menuconf.ActulizaExceles();
+                    
+                }
+                else
+                {
+                    menuconf.AbrirExcel();
+                }
+                
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.ToString());
+            }
+            this.Cursor = Cursors.Arrow;
         }
     }
 }

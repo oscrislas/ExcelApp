@@ -17,7 +17,9 @@ namespace ExcelApp
     {
         List<Excel> lista = new List<Excel>();
         public float cargaPorcentaje = 0;
-        
+        public bool estanAbiertos = false;
+        internal List<Excel> Lista { get => lista; set => lista = value; }
+
         public Menu()
         {
             InitializeComponent();
@@ -108,23 +110,25 @@ namespace ExcelApp
             }
         }
 
-        public void AbrirExcel()
+        public async void AbrirExcel()
         {
+            button6.Enabled = true;
             ActualizaExcelListTodo();
             int i = 0;
-            foreach (Excel excel in lista)
+            foreach (Excel excel in Lista)
             {
                 i++;
-                cargaPorcentaje = ((i * 100) / lista.Count);
+                cargaPorcentaje = ((i * 100) / Lista.Count);
                 excel.AbreConHilos();
             }
 
             revisa();
+            estanAbiertos = true;
         }
 
         private void excelInit()
         {
-            lista.Clear();
+            Lista.Clear();
             for (int i = 0; i < this.pantallaExcelDataGridView.Rows.Count; i++)
             {
 
@@ -135,7 +139,7 @@ namespace ExcelApp
                 int.TryParse(this.pantallaExcelDataGridView.Rows[i].Cells[4].Value.ToString(), out modo);
                 int.TryParse(this.pantallaExcelDataGridView.Rows[i].Cells[5].Value.ToString(), out fullscrem);
 
-                lista.Add(new Excel(this.pantallaExcelDataGridView.Rows[i].Cells[1].Value.ToString(), this.pantallaExcelDataGridView.Rows[i].Cells[2].Value.ToString(),
+                Lista.Add(new Excel(this.pantallaExcelDataGridView.Rows[i].Cells[1].Value.ToString(), this.pantallaExcelDataGridView.Rows[i].Cells[2].Value.ToString(),
                 abrir == 1, modo == 1, fullscrem == 1,
                 (int)this.pantallaExcelDataGridView.Rows[i].Cells[6].Value, (int)this.pantallaExcelDataGridView.Rows[i].Cells[7].Value, (int)this.pantallaExcelDataGridView.Rows[i].Cells[8].Value));
 
@@ -148,6 +152,7 @@ namespace ExcelApp
 
         private void ActualizaExcelList()
         {
+
             int i = 0;
             i = pantallaExcelDataGridView.CurrentRow.Index;
             int abrir = 0;
@@ -156,7 +161,7 @@ namespace ExcelApp
             int.TryParse(this.pantallaExcelDataGridView.Rows[i].Cells[3].Value.ToString(), out abrir);
             int.TryParse(this.pantallaExcelDataGridView.Rows[i].Cells[4].Value.ToString(), out modo);
             int.TryParse(this.pantallaExcelDataGridView.Rows[i].Cells[5].Value.ToString(), out fullscrem);
-            this.lista[i].setNewData(this.pantallaExcelDataGridView.Rows[i].Cells[1].Value.ToString(), this.pantallaExcelDataGridView.Rows[i].Cells[2].Value.ToString(),
+            this.Lista[i].setNewData(this.pantallaExcelDataGridView.Rows[i].Cells[1].Value.ToString(), this.pantallaExcelDataGridView.Rows[i].Cells[2].Value.ToString(),
                 abrir == 1, modo == 1, fullscrem == 1,
                 (int)this.pantallaExcelDataGridView.Rows[i].Cells[6].Value, (int)this.pantallaExcelDataGridView.Rows[i].Cells[7].Value, (int)this.pantallaExcelDataGridView.Rows[i].Cells[8].Value);
 
@@ -174,7 +179,7 @@ namespace ExcelApp
                 int.TryParse(this.pantallaExcelDataGridView.Rows[i].Cells[4].Value.ToString(), out modo);
                 int.TryParse(this.pantallaExcelDataGridView.Rows[i].Cells[5].Value.ToString(), out fullscrem);
 
-                this.lista[i].setNewData(this.pantallaExcelDataGridView.Rows[i].Cells[1].Value.ToString(), this.pantallaExcelDataGridView.Rows[i].Cells[2].Value.ToString(),
+                this.Lista[i].setNewData(this.pantallaExcelDataGridView.Rows[i].Cells[1].Value.ToString(), this.pantallaExcelDataGridView.Rows[i].Cells[2].Value.ToString(),
                     abrir == 1, modo == 1, fullscrem == 1,
                     (int)this.pantallaExcelDataGridView.Rows[i].Cells[6].Value, (int)this.pantallaExcelDataGridView.Rows[i].Cells[7].Value, (int)this.pantallaExcelDataGridView.Rows[i].Cells[8].Value);  
 
@@ -183,10 +188,10 @@ namespace ExcelApp
 
         private void revisa()
         {
-            for (int i = 0; i < lista.Count; i++)
+            for (int i = 0; i < Lista.Count; i++)
             {
-                while (lista[i].TypingThread.IsAlive) ;
-                cargaPorcentaje = ((i * 100) / lista.Count);
+                while (Lista[i].TypingThread.IsAlive) ;
+                cargaPorcentaje = ((i * 100) / Lista.Count);
             }
 
         }
@@ -194,6 +199,9 @@ namespace ExcelApp
         private void button3_Click(object sender, EventArgs e)
         {
             Excel.CierraExel();
+            estanAbiertos = false;
+            button6.Enabled = false;
+
         }
 
         private void pantallaExcelDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -206,7 +214,7 @@ namespace ExcelApp
                 try
                 {
                     this.Cursor = Cursors.WaitCursor;
-                    lista[pantallaExcelDataGridView.CurrentRow.Index].AbreExel();
+                    Lista[pantallaExcelDataGridView.CurrentRow.Index].AbreExel();
                     this.Cursor = Cursors.Arrow;
 
                 }
@@ -253,6 +261,7 @@ namespace ExcelApp
         public void cerrarExcel()
         {
             Excel.CierraExel();
+            button6.Enabled = false;
         }
 
         public int countDataGridViewOpen()
@@ -281,19 +290,22 @@ namespace ExcelApp
 
         public void ActulizaExceles()
         {
-            for(int i = 0; i < lista.Count; i++)
+            if (estanAbiertos == true)
             {
-                if (lista[i].Modo == false&&lista[i].Abrir==true)
+                for(int i = 0; i < Lista.Count; i++)
                 {
-                    lista[i].GuardaExcel();
+                    if (Lista[i].Modo == false&&Lista[i].Abrir==true)
+                    {
+                        Lista[i].GuardaExcel();
+                    }else if (Lista[i].Modo == true && Lista[i].Abrir == true)
+                    {
+                        Lista[i].CierraExcel();
+                        Lista[i].AbreConHilos();
+                    }
+              
                 }
-                if (lista[i].Modo == true && lista[i].Abrir == true)
-                {
-                    lista[i].CierraExcel();
-                    lista[i].AbreConHilos();
-                }
-                
             }
+
             
         }
 
@@ -342,6 +354,18 @@ namespace ExcelApp
             }
         }
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+            if (estanAbiertos==true)
+            {
+                
+                ActulizaExceles();
+                
+            }
 
+            this.Cursor = Cursors.Arrow;
+
+        }
     }
 }

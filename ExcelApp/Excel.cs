@@ -66,6 +66,7 @@ namespace ExcelApp
                 // This won't throw an exception anymore !
             });
             this.TypingThread.Start();
+                  
 
 
         }

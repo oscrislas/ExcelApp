@@ -29,6 +29,7 @@ namespace ExcelApp
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Video));
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.marco = new System.Windows.Forms.Panel();
@@ -38,6 +39,7 @@ namespace ExcelApp
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.pantallaExcelTableAdapter1 = new ExcelApp.inventoryDataSetTableAdapters.pantallaExcelTableAdapter();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
             this.marco.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -118,6 +120,12 @@ namespace ExcelApp
             // 
             this.pantallaExcelTableAdapter1.ClearBeforeFill = true;
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 60000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Video
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -149,5 +157,6 @@ namespace ExcelApp
         private System.Windows.Forms.Button button2;
         private inventoryDataSetTableAdapters.pantallaExcelTableAdapter pantallaExcelTableAdapter1;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Timer timer1;
     }
 }
