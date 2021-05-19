@@ -106,13 +106,35 @@ namespace ExcelApp
                 excelApp = new Microsoft.Office.Interop.Excel.Application();
                 excelWorkbook = excelApp.Workbooks.Open(this.link,
                             0, this.Modo, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "",
-                            true, false, 0, true, false, false);
+                            false, false, 0, true, false, false);
+                
+
 
                 // if you want to make excel visible to user, set this property to true, false by default
-                excelApp.DisplayAlerts = false;
-                excelApp.Visible = true;
-                excelApp.DisplayFullScreen = this.fullscrem;
-                excelApp.DisplayScrollBars = false;
+                // excelApp.DisplayAlerts = false;
+                try
+                {
+                    while (!excelApp.Ready)
+                    {
+                        Thread.Sleep(500);
+                    }
+                }
+                catch
+                {
+                    
+                }
+                try
+                {
+                    excelApp.DisplayAlerts = false;
+                    excelApp.Visible = true;
+                    excelApp.DisplayFullScreen = this.fullscrem;
+                    excelApp.DisplayScrollBars = false;
+                }
+                catch
+                {
+
+                }
+
                 
 
                 // open an existing workbook
@@ -160,7 +182,16 @@ namespace ExcelApp
             if (this.Abrir ==true)
             {
                 MakeExternalWindowBorderless(this.handle);
-                SetWindowPos(this.handle, -2, Screen.AllScreens[this.pantalla].WorkingArea.X, Screen.AllScreens[this.pantalla].WorkingArea.Y , Screen.AllScreens[this.pantalla].WorkingArea.Width, Screen.AllScreens[this.pantalla].WorkingArea.Height, SWP_SHOWWINDOW);
+                try
+                {
+                    SetWindowPos(this.handle, -2, Screen.AllScreens[this.pantalla].WorkingArea.X, Screen.AllScreens[this.pantalla].WorkingArea.Y, Screen.AllScreens[this.pantalla].WorkingArea.Width, Screen.AllScreens[this.pantalla].WorkingArea.Height, SWP_SHOWWINDOW);
+
+                }
+                catch
+                {
+                   
+
+                }
                 mueve();
             }
 
@@ -200,7 +231,8 @@ namespace ExcelApp
 
         public void CierraExcel()
         {
-            excelWorkbook.Close();
+
+            excelApp.Quit();
         }
     }
 }

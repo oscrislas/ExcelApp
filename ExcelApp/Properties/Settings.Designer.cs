@@ -23,17 +23,6 @@ namespace ExcelApp.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=108.175.5.116;user id=oliver;password=Cristina6192380953;persistsecurityin" +
-            "fo=True;database=inventory;allowuservariables=True")]
-        public string inventoryConnectionString {
-            get {
-                return ((string)(this["inventoryConnectionString"]));
-            }
-        }
-        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
@@ -55,6 +44,17 @@ namespace ExcelApp.Properties {
             }
             set {
                 this["Reloj"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=172.21.98.75;user id=fsc0h8wims;password=Parker1Parker1;persistsecurityinf" +
+            "o=True;database=inventory;allowuservariables=True")]
+        public string inventoryConnectionString {
+            get {
+                return ((string)(this["inventoryConnectionString"]));
             }
         }
     }

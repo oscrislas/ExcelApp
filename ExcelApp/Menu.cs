@@ -113,16 +113,16 @@ namespace ExcelApp
         public async void AbrirExcel()
         {
             button6.Enabled = true;
+            
             ActualizaExcelListTodo();
-            int i = 0;
             foreach (Excel excel in Lista)
             {
-                i++;
-                cargaPorcentaje = ((i * 100) / Lista.Count);
                 excel.AbreConHilos();
+                while (excel.TypingThread.IsAlive) ;            
+                
             }
 
-            revisa();
+            //revisa();
             estanAbiertos = true;
         }
 

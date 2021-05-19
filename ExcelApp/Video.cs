@@ -31,7 +31,7 @@ namespace ExcelApp
             menu.Region = System.Drawing.Region.FromHrgn(c.CreateRoundRectRgn(0, 0, marco.Width, marco.Height, 30, 30));
 
             PingApp();
-            //this.ClientSize = new Size(3990,2200);
+            this.ClientSize = new Size(3990,2200);
             playlist();
             menuconf.cerrarExcel();
 
@@ -200,7 +200,7 @@ namespace ExcelApp
         {
             this.TopMost = true;
 
-            // VirtualDesktop.Desktop.PinApplication(this.Handle);
+           // VirtualDesktop.Desktop.PinApplication(this.Handle);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -213,21 +213,22 @@ namespace ExcelApp
             this.Cursor = Cursors.WaitCursor;
             try
             {
+                VirtualDesktop.Desktop.FromIndex(0).MakeVisible();
                 if (this.menuconf.Lista.Count > 0)
                 {
-                   
-                    menuconf.ActulizaExceles();
                     
-                }
-                else
-                {
-                    menuconf.AbrirExcel();
+                    if (this.menuconf.estanAbiertos)
+                    {
+                        menuconf.ActulizaExceles();
+                    }
+                    
+                
                 }
                 
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.ToString());
+                
             }
             this.Cursor = Cursors.Arrow;
         }

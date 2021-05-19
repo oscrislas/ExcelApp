@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="ExcelApp.exe" version="1.0.0.7" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="ExcelApp.exe" version="1.0.0.11" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <application />
   <entryPoint>
     <assemblyIdentity name="ExcelApp" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
@@ -78,14 +78,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ExcelApp.exe" size="158192">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ExcelApp.exe" size="158704">
       <assemblyIdentity name="ExcelApp" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>A/nl0VBu26YosCbNWa0ea8mP3ZwRqYy7sge7KU1F0Ok=</dsig:DigestValue>
+        <dsig:DigestValue>hguPDH1s54RCB/VniK1RI6x5kGl2dr9q/gwAAs4B6w4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -677,13 +677,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="ExcelApp.exe.config" size="2162">
+  <file name="ExcelApp.exe.config" size="2161">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>zaptmrmZjnYSbuYg/qg1VozVpexXPKJuLqsdT/1QlW8=</dsig:DigestValue>
+      <dsig:DigestValue>YmSJ9q2DYJnxPy42dQDtXHOpnYcmBRinZ3VYRrTgYkg=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
