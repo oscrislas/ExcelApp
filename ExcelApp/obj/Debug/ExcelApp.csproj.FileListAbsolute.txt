@@ -221,7 +221,6 @@ C:\Users\fscadmin\Desktop\ExcelApp\ExcelApp\bin\Debug\zh-Hans\Microsoft.CodeAnal
 C:\Users\fscadmin\Desktop\ExcelApp\ExcelApp\bin\Debug\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\fscadmin\Desktop\ExcelApp\ExcelApp\bin\Debug\Interop.WMPLib.dll
 C:\Users\fscadmin\Desktop\ExcelApp\ExcelApp\bin\Debug\AxInterop.WMPLib.dll
-C:\Users\fscadmin\Desktop\ExcelApp\ExcelApp\obj\Debug\ExcelApp.csprojAssemblyReference.cache
 C:\Users\fscadmin\Desktop\ExcelApp\ExcelApp\obj\Debug\Interop.WMPLib.dll
 C:\Users\fscadmin\Desktop\ExcelApp\ExcelApp\obj\Debug\AxInterop.WMPLib.dll
 C:\Users\fscadmin\Desktop\ExcelApp\ExcelApp\obj\Debug\ExcelApp.csproj.ResolveComReference.cache
@@ -247,3 +246,12 @@ C:\Users\fscadmin\Desktop\ExcelApp\ExcelApp\bin\Debug\ExcelApp.exe.manifest
 C:\Users\fscadmin\Desktop\ExcelApp\ExcelApp\bin\Debug\ExcelApp.application
 C:\Users\fscadmin\Desktop\ExcelApp\ExcelApp\obj\Debug\ExcelApp.exe.manifest
 C:\Users\fscadmin\Desktop\ExcelApp\ExcelApp\obj\Debug\ExcelApp.application
+C:\Users\fscadmin\Desktop\ExcelApp\ExcelApp\bin\Debug\SharpDX.Direct2D1.dll
+C:\Users\fscadmin\Desktop\ExcelApp\ExcelApp\bin\Debug\SharpDX.dll
+C:\Users\fscadmin\Desktop\ExcelApp\ExcelApp\bin\Debug\SharpDX.DXGI.dll
+C:\Users\fscadmin\Desktop\ExcelApp\ExcelApp\bin\Debug\SharpDX.pdb
+C:\Users\fscadmin\Desktop\ExcelApp\ExcelApp\bin\Debug\SharpDX.Direct2D1.pdb
+C:\Users\fscadmin\Desktop\ExcelApp\ExcelApp\bin\Debug\SharpDX.Direct2D1.xml
+C:\Users\fscadmin\Desktop\ExcelApp\ExcelApp\bin\Debug\SharpDX.DXGI.pdb
+C:\Users\fscadmin\Desktop\ExcelApp\ExcelApp\bin\Debug\SharpDX.DXGI.xml
+C:\Users\fscadmin\Desktop\ExcelApp\ExcelApp\obj\Debug\ExcelApp.csproj.AssemblyReference.cache

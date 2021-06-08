@@ -103,10 +103,8 @@ namespace ExcelApp
             
             if (this.Abrir)
             {
-                excelApp = new Microsoft.Office.Interop.Excel.Application();
-                excelWorkbook = excelApp.Workbooks.Open(this.link,
-                            0, this.Modo, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "",
-                            false, false, 0, true, false, false);
+
+
                 
 
 
@@ -114,6 +112,10 @@ namespace ExcelApp
                 // excelApp.DisplayAlerts = false;
                 try
                 {
+                    excelApp = new Microsoft.Office.Interop.Excel.Application();
+                    excelWorkbook = excelApp.Workbooks.Open(this.link,
+                                0, this.Modo, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "",
+                                false, false, 0, true, false, false);
                     while (!excelApp.Ready)
                     {
                         Thread.Sleep(500);
@@ -166,7 +168,7 @@ namespace ExcelApp
                 }
                 catch (Exception err)
                 {
-                    MessageBox.Show(err.ToString());
+                   // MessageBox.Show(err.ToString());
                 }
                 finally
                 {

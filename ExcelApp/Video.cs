@@ -220,6 +220,7 @@ namespace ExcelApp
                     if (this.menuconf.estanAbiertos)
                     {
                         menuconf.ActulizaExceles();
+                        
                     }
                     
                 
@@ -232,5 +233,6 @@ namespace ExcelApp
             }
             this.Cursor = Cursors.Arrow;
         }
+
     }
 }
